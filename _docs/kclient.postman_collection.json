@@ -1,0 +1,221 @@
+{
+	"info": {
+		"name": "PsyApps",
+		"_postman_id": "acd26017-0aa5-4e5e-8ab2-a8a52aae14bd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Appel d'enregistrement d'une nouvelle machine Kiwi",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://pool.sante.kiwi-backup.com:4443/register?key=Lslm4wxqyvD0&name=Test2&locale=fr",
+					"protocol": "https",
+					"host": [
+						"pool",
+						"sante",
+						"kiwi-backup",
+						"com"
+					],
+					"port": "4443",
+					"path": [
+						"register"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "Lslm4wxqyvD0",
+							"equals": true
+						},
+						{
+							"key": "name",
+							"value": "Test2",
+							"equals": true
+						},
+						{
+							"key": "locale",
+							"value": "fr",
+							"equals": true
+						}
+					]
+				},
+				"description": "Appel d'enregistrement d'une nouvelle machine Kiwi\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Lancement Sauvegarde",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://pool.sante.kiwi-backup.com:4443/full?kkey=qcB64bVm1tAobbuV4Ued4Xn37stTs5P5&uid=5aaa649fd5cab4000b43de72&conf=test",
+					"protocol": "https",
+					"host": [
+						"pool",
+						"sante",
+						"kiwi-backup",
+						"com"
+					],
+					"port": "4443",
+					"path": [
+						"full"
+					],
+					"query": [
+						{
+							"key": "kkey",
+							"value": "qcB64bVm1tAobbuV4Ued4Xn37stTs5P5",
+							"equals": true
+						},
+						{
+							"key": "uid",
+							"value": "5aaa649fd5cab4000b43de72",
+							"equals": true
+						},
+						{
+							"key": "conf",
+							"value": "test",
+							"equals": true
+						}
+					]
+				},
+				"description": "Démarrage d'une sauvegarde"
+			},
+			"response": []
+		},
+		{
+			"name": "Enregistrement des meta données",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n {\n\t\"path\": \"/Users/LasticLaptop/testdir\", \n\t\"meta\": \n\t\t\"{\n\t\t  \\\"st_ctime\\\": 1522176312, \n\t\t  \\\"uid\\\": 1000, \n\t\t  \\\"acl\\\": 509, \n\t\t  \\\"gid\\\": 1000, \n\t\t  \\\"st_size\\\": 4096, \n\t\t  \\\"mode\\\": 16893, \n\t\t  \\\"typ\\\": \\\"Dir\\\"\n\t\t }\", \n\t\"type\": \"Dir\", \n\t\"sha\": \"\"\n }\n]"
+				},
+				"url": {
+					"raw": "https://pool.sante.kiwi-backup.com:4443/meta?uid=5aaa649fd5cab4000b43de72&bid=5aade078d5cab4000b450efb",
+					"protocol": "https",
+					"host": [
+						"pool",
+						"sante",
+						"kiwi-backup",
+						"com"
+					],
+					"port": "4443",
+					"path": [
+						"meta"
+					],
+					"query": [
+						{
+							"key": "uid",
+							"value": "5aaa649fd5cab4000b43de72",
+							"equals": true
+						},
+						{
+							"key": "bid",
+							"value": "5aade078d5cab4000b450efb",
+							"equals": true
+						}
+					]
+				},
+				"description": "Démarrage d'une sauvegarde"
+			},
+			"response": []
+		},
+		{
+			"name": "Enregistrement des données réelles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://pool.sante.kiwi-backup.com:4443/full?kkey=qcB64bVm1tAobbuV4Ued4Xn37stTs5P5&uid=5aaa649fd5cab4000b43de72&conf=test",
+					"protocol": "https",
+					"host": [
+						"pool",
+						"sante",
+						"kiwi-backup",
+						"com"
+					],
+					"port": "4443",
+					"path": [
+						"full"
+					],
+					"query": [
+						{
+							"key": "kkey",
+							"value": "qcB64bVm1tAobbuV4Ued4Xn37stTs5P5",
+							"equals": true
+						},
+						{
+							"key": "uid",
+							"value": "5aaa649fd5cab4000b43de72",
+							"equals": true
+						},
+						{
+							"key": "conf",
+							"value": "test",
+							"equals": true
+						}
+					]
+				},
+				"description": "Démarrage d'une sauvegarde"
+			},
+			"response": []
+		},
+		{
+			"name": "Arret Sauvegarde",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://pool.sante.kiwi-backup.com:4443/full?kkey=qcB64bVm1tAobbuV4Ued4Xn37stTs5P5&uid=5aaa649fd5cab4000b43de72&conf=test",
+					"protocol": "https",
+					"host": [
+						"pool",
+						"sante",
+						"kiwi-backup",
+						"com"
+					],
+					"port": "4443",
+					"path": [
+						"full"
+					],
+					"query": [
+						{
+							"key": "kkey",
+							"value": "qcB64bVm1tAobbuV4Ued4Xn37stTs5P5",
+							"equals": true
+						},
+						{
+							"key": "uid",
+							"value": "5aaa649fd5cab4000b43de72",
+							"equals": true
+						},
+						{
+							"key": "conf",
+							"value": "test",
+							"equals": true
+						}
+					]
+				},
+				"description": "Démarrage d'une sauvegarde"
+			},
+			"response": []
+		}
+	]
+}

@@ -27,11 +27,12 @@ For each File
 ## Send meta data ( about file metadata modification or directory entry ( no data stream ))
 ```
 POST /meta
-HEADERS = {'kserver-uid': u'5ab76cd67da254000bd5a37b', 'kserver-bid': u'5ab76cd77da254000bd5a37c'}
+HEADERS = {'kserver-uid': u'5ab76cd67da254000bd5a37b', 'kserver-bid': u'5ab76cd77da254000bd5a37c', 'content-type': ''}
 REQUEST BUFFER = [{"path": "/home/sebastien/kiwi/client4/kiwi-gui/server/testdata", "meta": "{\"st_ctime\": 1522007391, \"uid\": 1000, \"acl\": 509, \"gid\": 1000, \"st_size\": 4096, \"mode\": 16893, \"typ\": \"Dir\"}", "type": "Dir", "sha": ""}]
 ```
 * The Request can be made for multiple file ( for performance reason )
 * The return is in the same order. "Full" -> you should send the file.
+* The content type have to be an empty string ( bug ?)
 ...
 
 ## Send file stream ( simple )
@@ -43,15 +44,6 @@ REQUEST BODY = [CONTENT OF FILE]
 The sha is the sha1 hash of the stream. It is verified on server and have to be exact. Used for deduplication
 
 
-## End this backup
-```POST /stop
-HEADERS = None
-REQUEST BODY = {'bid': u'5ab76cd77da254000bd5a37c', 'kkey': u'pbxJYAR06w8r9Iaovzx1MchTXWEHTl8m', 'uid': u'5ab76cd67da254000bd5a37b'}
-```
-
-## Synchro ( get local database of server state )
-download file  https://dipsy.sante.kiwi-backup.com:4443/dbm?kkey=CA23fWvykxLdMk4FIaTCza1fzmtpaGgQ&uid=5ab781067da254000bd5a91b
-
 ## SEND Backup stats ( for the webadmin )
 ```
 POST /stat
@@ -61,8 +53,18 @@ REQUEST BODY = {'tz_dec': -7200, 'uid': u'5ab781067da254000bd5a91b', 'ChangedFil
 * All field must be present. Can be null except SourceFileSize .
 * All size in octet
 
+
+## End this backup
+```POST /stop
+HEADERS = None
+REQUEST BODY = {'bid': u'5ab76cd77da254000bd5a37c', 'kkey': u'pbxJYAR06w8r9Iaovzx1MchTXWEHTl8m', 'uid': u'5ab76cd67da254000bd5a37b'}
+```
+
+## Synchro ( get local database of server state )
+download file  https://dipsy.sante.kiwi-backup.com:4443/dbm?kkey=CA23fWvykxLdMk4FIaTCza1fzmtpaGgQ&uid=5ab781067da254000bd5a91b
+
+
+
 ## RESTORE ( get tar stream of the asked file ( fid ) and descendent if recursive is true)
 
 /tarmrestore?bid=0&kkey=CA23fWvykxLdMk4FIaTCza1fzmtpaGgQ&uid=5ab781067da254000bd5a91b&fid=5ab781087da254000bd5a925&recursive=True
-
-
